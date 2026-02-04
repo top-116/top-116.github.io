@@ -1,0 +1,45 @@
+<div class="question">
+<p>10. Чем бы ты хотел(а) заниматься чаще?</p>
+<label><input type="checkbox" value="letters"> Писать и создавать</label><br>
+<label><input type="checkbox" value="help"> Организовывать помощь</label><br>
+<label><input type="checkbox" value="travel"> Путешествовать</label><br>
+<label><input type="checkbox" value="eco"> Участвовать в акциях</label>
+</div>
+
+<button type="button" onclick="calculate()">Узнать результат</button>
+<div class="result" id="result"></div>
+
+</form>
+</div>
+
+<script>
+function calculate(){
+let scores = {
+animals:0, elder:0, letters:0,
+help:0, travel:0, events:0, eco:0
+};
+
+let checked = document.querySelectorAll("input[type=checkbox]:checked");
+checked.forEach(item => {
+scores[item.value]++;
+});
+
+let best = Object.keys(scores).reduce((a,b)=> scores[a]>scores[b]?a:b);
+
+let titles = {
+animals:"🐾 Помощь животным",
+elder:"👵 Помощь пожилым людям",
+letters:"✉️ Письма поддержки",
+help:"📦 Гуманитарная помощь",
+travel:"🚐 Поездки и выезды",
+events:"🎤 Форумы и мероприятия",
+eco:"🌱 Экология и озеленение"
+};
+
+document.getElementById("result").innerHTML =
+"Тебе больше всего подходит: <br><b>" + titles[best] + "</b>";
+}
+</script>
+
+</body>
+</html>

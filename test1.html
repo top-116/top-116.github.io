@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Тест: Какое волонтёрство тебе подходит</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #eef5ea;
+  padding: 20px;
+}
+
+.test {
+  background: white;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.question {
+  margin-bottom: 25px;
+}
+
+button {
+  padding: 12px 25px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.result {
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="test">
+<h2>Тест: Какое волонтёрство тебе подходит?</h2>
+
+<form id="quiz">
+
+<!-- ВОПРОС 1 -->
+<div class="question">
+<p>1. Что тебе нравится делать?</p>
+<label><input type="checkbox" value="animals"> Ухаживать за животными</label><br>
+<label><input type="checkbox" value="elder"> Общаться с пожилыми</label><br>
+<label><input type="checkbox" value="letters"> Писать письма</label><br>
+<label><input type="checkbox" value="help"> Собирать помощь</label><br>
+<label><input type="checkbox" value="eco"> Работать на природе</label>
+</div>
+
+<!-- ВОПРОС 2 -->
+<div class="question">
+<p>2. Где тебе комфортнее всего?</p>
+<label><input type="checkbox" value="animals"> В приюте</label><br>
+<label><input type="checkbox" value="elder"> В доме престарелых</label><br>
+<label><input type="checkbox" value="letters"> За компьютером</label><br>
+<label><input type="checkbox" value="help"> На складе</label><br>
+<label><input type="checkbox" value="eco"> В парке / лесу</label>
+</div>
+
+<!-- ВОПРОС 3 -->
+<div class="question">
+<p>3. Какой формат тебе ближе?</p>
+<label><input type="checkbox" value="travel"> Поездки</label><br>
+<label><input type="checkbox" value="events"> Форумы и мероприятия</label><br>
+<label><input type="checkbox" value="letters"> Онлайн-работа</label><br>
+<label><input type="checkbox" value="eco"> Экологические акции</label>
+</div>
+
+<!-- ВОПРОС 4 -->
+<div class="question">
+<p>4. Что у тебя получается лучше?</p>
+<label><input type="checkbox" value="letters"> Писать тексты</label><br>
+<label><input type="checkbox" value="help"> Организовывать сборы</label><br>
+<label><input type="checkbox" value="animals"> Заботиться о живых существах</label><br>
+<label><input type="checkbox" value="events"> Выступать и общаться</label>
+</div>
+
+<!-- ВОПРОС 5 -->
+<div class="question">
+<p>5. Как ты относишься к физической работе?</p>
+<label><input type="checkbox" value="eco"> Люблю активную работу</label><br>
+<label><input type="checkbox" value="animals"> Готов помогать руками</label><br>
+<label><input type="checkbox" value="letters"> Предпочитаю спокойную работу</label>
+</div>
+
+<!-- ВОПРОС 6 -->
+<div class="question">
+<p>6. Что для тебя важнее?</p>
+<label><input type="checkbox" value="elder"> Живое общение</label><br>
+<label><input type="checkbox" value="letters"> Творчество</label><br>
+<label><input type="checkbox" value="help"> Польза обществу</label><br>
+<label><input type="checkbox" value="eco"> Забота о природе</label>
+</div>
+
+<!-- ВОПРОС 7 -->
+<div class="question">
+<p>7. Какой темп работы тебе подходит?</p>
+<label><input type="checkbox" value="travel"> Активный</label><br>
+<label><input type="checkbox" value="letters"> Спокойный</label><br>
+<label><input type="checkbox" value="events"> Командный</label>
+</div>
+
+<!-- ВОПРОС 8 -->
+<div class="question">
+<p>8. Где ты хотел(а) бы чаще бывать?</p>
+<label><input type="checkbox" value="animals"> В приюте</label><br>
+<label><input type="checkbox" value="eco"> В парке</label><br>
+<label><input type="checkbox" value="events"> На мероприятиях</label><br>
+<label><input type="checkbox" value="travel"> В поездках</label>
+</div>
+
+<!-- ВОПРОС 9 -->
+<div class="question">
+<p>9. Что тебя больше мотивирует?</p>
+<label><input type="checkbox" value="elder"> Благодарность людей</label><br>
+<label><input type="checkbox" value="animals"> Помощь животным</label><br>
+<label><input type="checkbox" value="eco"> Улучшение природы</label><br>
+<label><input type="checkbox" value="events"> Новые знакомства</label>
+</div>
+
+<!-- ВОПРОС 10 -->
+<div class="question">
+<p>10. Чем бы ты хотел(а) заниматься чаще?</p>
+<label><input type="checkbox" value="letters"> Писать и создавать</label><br>
+<label><input type="checkbox" value="help"> Организовывать помощь</label><br>
+<label><input type="checkbox" value="travel"> Путешествовать</label><br>
+<label><input type="checkbox" value="eco"> Участвовать в акциях</label>
+</div>
+
+<button type="button" onclick="calculate()">Узнать результат</button>
+<div class="result" id="result"></div>
+
+</form>
+</div>
+
+<script>
+function calculate(){
+let scores = {
+animals:0, elder:0, letters:0,
+help:0, travel:0, events:0, eco:0
+};
+
+let checked = document.querySelectorAll("input[type=checkbox]:checked");
+checked.forEach(item => {
+scores[item.value]++;
+});
+
+let best = Object.keys(scores).reduce((a,b)=> scores[a]>scores[b]?a:b);
+
+let titles = {
+animals:"🐾 Помощь животным",
+elder:"👵 Помощь пожилым людям",
+letters:"✉️ Письма поддержки",
+help:"📦 Гуманитарная помощь",
+travel:"🚐 Поездки и выезды",
+events:"🎤 Форумы и мероприятия",
+eco:"🌱 Экология и озеленение"
+};
+
+document.getElementById("result").innerHTML =
+"Тебе больше всего подходит: <br><b>" + titles[best] + "</b>";
+}
+</script>
+
+</body>
+</html>
