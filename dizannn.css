@@ -15,13 +15,13 @@ h1 {
 .left-image {
         float: left;
         margin-right: 15px; /* Отступ справа от картинки */
-        width: 100%;
-        height: 100%;
+        width: 200px;
+        height: 150px;
             }
 .right-image {
         float: left;
-        width: 100%;
-        height: 100%;
+        width: 200px;
+        height: 150px;
              }
 a {
   text-decoration:none;
@@ -36,8 +36,8 @@ a {
 
 
 .img-button1 img {
-	width:100%;
-	height:100%;
+	width:700px;
+	height:120px;
     display: block;
     transition: transform 0.1s, filter 0.1s;
 	margin-left:300px;
@@ -81,8 +81,8 @@ a {
 
 
 .img-button img {
-	width:100%;
-	height:100%;
+	width:100px;
+	height:60px;
     display: flex;
 	flex-wrap: wrap;
 }
@@ -128,24 +128,6 @@ a {
 	height:120px
 
 }
-/* ПК — по умолчанию */
-.container {
-    display: flex;
-    flex-direction: row;
-}
 
-/* Планшеты */
-@media (max-width: 1024px) {
-    .container {
-        flex-wrap: wrap;
-    }
-}
-
-/* Телефоны */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-}
 
 
