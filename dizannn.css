@@ -116,4 +116,24 @@ a {
 	background:#A7D7C5;
 	margin-top:100px;
 	height:120px
+
+}
+/* ПК — по умолчанию */
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Планшеты */
+@media (max-width: 1024px) {
+    .container {
+        flex-wrap: wrap;
+    }
+}
+
+/* Телефоны */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
 }
